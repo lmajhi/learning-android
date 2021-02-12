@@ -1,9 +1,14 @@
 package com.example.uibasics;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,68 +18,42 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private ListView citiesList;
-    private Spinner studentSpinner;
+    private TextView textHello;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+        textHello = findViewById(R.id.textHello);
+        textHello.setText(getString(R.string.hello));
 
-        citiesList = findViewById(R.id.cityList);
-        studentSpinner = findViewById(R.id.studentSpinner);
+    }
 
-//        final ArrayList<String> students = new ArrayList<>();
-//        students.add("Meisam");
-//        students.add("Manohar");
-//        students.add("Macy");
-//        students.add("Gulzar");
-//        students.add("JasPreet");
-//        students.add("Venkat");
-//
-//        ArrayAdapter<String> studentsAdapter = new ArrayAdapter<>(
-//                this,
-//                android.R.layout.simple_spinner_dropdown_item,
-//                students
-//        );
-//        studentSpinner.setAdapter(studentsAdapter);
-        studentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, studentSpinner.getSelectedItem().toString() + " selected", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        final ArrayList<String> cities = new ArrayList<>();
-        cities.add("Zurich");
-        cities.add("New York");
-        cities.add("Berlin");
-        cities.add("Nairobi");
-        cities.add("Moscow");
-        cities.add("Madrid");
-
-        ArrayAdapter<String> citiesAdapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                cities
-        );
-
-        citiesList.setAdapter(citiesAdapter);
-
-        citiesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, cities.get(position) + " selected.", Toast.LENGTH_SHORT).show();
-            }
-        });
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.settings_menu:
+                Toast.makeText(this, "Settings Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.alarm_menu:
+                Toast.makeText(this, "Alarm Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

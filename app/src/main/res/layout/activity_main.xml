@@ -5,18 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Spinner
-        android:id="@+id/studentSpinner"
+    <TextView
+        android:id="@+id/textHello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:entries="@array/students"/>
-
-    <ListView
-        android:id="@+id/cityList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/studentSpinner"
-        android:layout_marginTop="100dp" />
+        android:text="Hello World"
+        android:textColor="@color/blue" />
 </RelativeLayout>

@@ -1,11 +1,4 @@
 <resources>
     <string name="app_name">UI Basics</string>
-    <string-array name="students">
-        <item>Meisam</item>
-        <item>Sarah</item>
-        <item>Brad</item>
-        <item>Gulzar</item>
-        <item>Mozart</item>
-    </string-array>
     <string name="hello">Hello</string>
 </resources>
